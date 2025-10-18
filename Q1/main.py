@@ -40,7 +40,6 @@ def edit_menu(hash_table: HashTable):
 
     if not product:
         input("No product found.")
-        cli_menu.clear_screen()
         return
 
     while True:
@@ -62,6 +61,26 @@ def edit_menu(hash_table: HashTable):
             case "5":
                 break
         cli_menu.clear_screen()
+
+
+def delete_menu(hash_table: HashTable):
+    product_id = input("Enter product id to delete: ")
+    product = hash_table.search(product_id)
+
+    if not product:
+        input("No product found.")
+        return
+
+    cli_menu.clear_screen()
+    print(product)
+
+    choice = cli_menu.select(title="Confirm deletion?", choices=["Yes", "No"])
+    match choice:
+        case "1":
+            hash_table.delete(product.id)
+            input("Deletion successful.")
+        case "2":
+            input("Canceled deletion.")
 
 
 def main():
@@ -89,7 +108,7 @@ def main():
             case "3":
                 edit_menu(hash_table)
             case "4":
-                pass
+                delete_menu(hash_table)
             case "5":
                 hash_table.print()
                 input()

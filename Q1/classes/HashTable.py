@@ -46,6 +46,30 @@ class HashTable:
 
         return None
 
+    def delete(self, key: str) -> bool:
+        """Find and delete entry, return True if successful, False otherwise."""
+        hash_index = self._hash(key)
+        bucket = self.buckets[hash_index]
+
+        # sliding window kinda concept here
+        previous, current = None, bucket
+
+        # loop through the chain
+        while current:
+            if current.key == key:
+                if not previous:
+                    # if entry is first in the chain
+                    self.buckets[hash_index] = current.next
+                else:
+                    # else link previous to next
+                    previous.next = current.next
+                return True
+
+            previous = current
+            current = current.next
+
+        return False
+
     def print(self):
         line = ""
         for i, bucket in enumerate(self.buckets):
