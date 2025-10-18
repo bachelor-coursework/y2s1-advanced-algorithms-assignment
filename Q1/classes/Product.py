@@ -13,3 +13,6 @@ class Product:
     @staticmethod
     def next_product_id():
         return f"P{Product._current_id:04}"
+
+    def __str__(self) -> str:
+        return f"{self.id}: {self.name} | ${self.price:.2f}, {self.stock} left."

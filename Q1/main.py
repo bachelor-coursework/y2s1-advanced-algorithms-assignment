@@ -24,6 +24,18 @@ def insert_menu(hash_table: HashTable):
             input("Canceled insertion.")
 
 
+def search_menu(hash_table: HashTable):
+    product_id = input("Enter product id to search: ")
+    product = hash_table.search(product_id)
+
+    if not product:
+        input("No product found.")
+        cli_menu.clear_screen()
+    else:
+        input(product)
+        cli_menu.clear_screen()
+
+
 def main():
     hash_table = HashTable(11)
 
@@ -37,17 +49,23 @@ def main():
         hash_table.insert(product.id, product)
 
     while True:
-        choice = cli_menu.select(title="Baby Shop Inventory System", choices=["Insert", "Search", "Edit", "Delete"])
+        choice = cli_menu.select(
+            title="Baby Shop Inventory System",
+            choices=["Insert", "Search", "Edit", "Delete", "Display hash table", "Exit program"],
+        )
         match choice:
             case "1":
                 insert_menu(hash_table)
             case "2":
-                pass
+                search_menu(hash_table)
             case "3":
                 pass
             case "4":
                 pass
             case "5":
+                hash_table.print()
+                input()
+            case "6":
                 sys.exit()
 
 

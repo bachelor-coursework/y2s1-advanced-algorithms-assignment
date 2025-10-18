@@ -41,7 +41,7 @@ class HashTable:
         current_entry = bucket
         while current_entry:
             if current_entry.key == key:
-                return current_entry
+                return current_entry.value
             current_entry = current_entry.next
 
         return None
