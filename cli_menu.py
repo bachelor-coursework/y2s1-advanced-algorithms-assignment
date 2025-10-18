@@ -19,3 +19,21 @@ def select(title: str, choices: list[str], clear_screen=True) -> str:
             if clear_screen:
                 _clear_screen()
             return choice
+
+
+def input_float(prompt: str) -> float:
+    while True:
+        return_value = input(prompt)
+        try:
+            return float(return_value)
+        except ValueError:
+            print("Invalid float number.")
+
+
+def input_int(prompt: str) -> int:
+    while True:
+        return_value = input(prompt)
+        if return_value.isdigit():
+            return int(return_value)
+        else:
+            print("Invalid integer.")

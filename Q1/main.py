@@ -5,8 +5,23 @@ import cli_menu
 import sys
 
 
-def insert_menu():
-    choice = cli_menu.select(title="Insert New Product", choices=["Insert", "Search", "Edit", "Delete"])
+def insert_menu(hash_table: HashTable):
+    print("Insert New Product")
+    print(f"Product id: {Product.next_product_id()}")
+    product_name = input("Product name: ")
+    product_description = input("Product description: ")
+    product_price = cli_menu.input_float("Product price: ")
+    product_stock = cli_menu.input_int("Product stock: ")
+
+    print("\n")
+    choice = cli_menu.select(title="Confirm insertion?", choices=["Yes", "No"])
+    match choice:
+        case "1":
+            new_product = Product(product_name, product_description, product_price, product_stock)
+            hash_table.insert(new_product.id, new_product)
+            input("Insertion successful.")
+        case "2":
+            input("Canceled insertion.")
 
 
 def main():
@@ -14,9 +29,9 @@ def main():
 
     # pre-defined records
     products = [
-        Product("BP001", "Baby Diapers (Small)", "Soft, leak-proof diapers for newborns.", 28.90, 120),
-        Product("BP002", "Baby Lotion (200ml)", "Gentle moisturizing lotion for baby skin.", 15.50, 80),
-        Product("BP003", "Feeding Bottle (250ml)", "BPA-free feeding bottle with anti-colic design.", 22.00, 60),
+        Product("Baby Diapers (Small)", "Soft, leak-proof diapers for newborns.", 28.90, 120),
+        Product("Baby Lotion (200ml)", "Gentle moisturizing lotion for baby skin.", 15.50, 80),
+        Product("Feeding Bottle (250ml)", "BPA-free feeding bottle with anti-colic design.", 22.00, 60),
     ]
     for product in products:
         hash_table.insert(product.id, product)
@@ -25,7 +40,7 @@ def main():
         choice = cli_menu.select(title="Baby Shop Inventory System", choices=["Insert", "Search", "Edit", "Delete"])
         match choice:
             case "1":
-                pass
+                insert_menu(hash_table)
             case "2":
                 pass
             case "3":
