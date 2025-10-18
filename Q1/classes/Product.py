@@ -15,4 +15,4 @@ class Product:
         return f"P{Product._current_id:04}"
 
     def __str__(self) -> str:
-        return f"{self.id}: {self.name} | ${self.price:.2f}, {self.stock} left."
+        return f"{self.id}: {self.name}, {self.description[:20] + '...' if len(self.description) > 20 else self.description} | ${self.price:.2f}, {self.stock} left."

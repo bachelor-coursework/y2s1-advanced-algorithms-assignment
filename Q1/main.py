@@ -30,9 +30,37 @@ def search_menu(hash_table: HashTable):
 
     if not product:
         input("No product found.")
-        cli_menu.clear_screen()
     else:
         input(product)
+
+
+def edit_menu(hash_table: HashTable):
+    product_id = input("Enter product id to edit: ")
+    product = hash_table.search(product_id)
+
+    if not product:
+        input("No product found.")
+        cli_menu.clear_screen()
+        return
+
+    while True:
+        print(product)
+        choice = cli_menu.select(
+            title="Select property to edit: ",
+            choices=["Name", "Description", "Price", "Stock", "Save changes"],
+            clear_screen_after=False,
+        )
+        match choice:
+            case "1":
+                product.name = input("Enter new name: ")
+            case "2":
+                product.description = input("Enter new description: ")
+            case "3":
+                product.price = cli_menu.input_float("Enter new price: ")
+            case "4":
+                product.stock = cli_menu.input_int("Enter new stock: ")
+            case "5":
+                break
         cli_menu.clear_screen()
 
 
@@ -59,7 +87,7 @@ def main():
             case "2":
                 search_menu(hash_table)
             case "3":
-                pass
+                edit_menu(hash_table)
             case "4":
                 pass
             case "5":
@@ -67,6 +95,8 @@ def main():
                 input()
             case "6":
                 sys.exit()
+
+        cli_menu.clear_screen()
 
 
 if __name__ == "__main__":
