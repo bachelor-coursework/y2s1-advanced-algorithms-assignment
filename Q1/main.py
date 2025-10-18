@@ -1,5 +1,6 @@
 from Q1.classes.HashTable import HashTable
 from Q1.classes.Product import Product
+from Q1.product_data import product_data
 
 import cli_menu
 import sys
@@ -86,13 +87,8 @@ def delete_menu(hash_table: HashTable):
 def main():
     hash_table = HashTable(11)
 
-    # pre-defined records
-    products = [
-        Product("Baby Diapers (Small)", "Soft, leak-proof diapers for newborns.", 28.90, 120),
-        Product("Baby Lotion (200ml)", "Gentle moisturizing lotion for baby skin.", 15.50, 80),
-        Product("Feeding Bottle (250ml)", "BPA-free feeding bottle with anti-colic design.", 22.00, 60),
-    ]
-    for product in products:
+    # insert pre-defined records
+    for product in product_data:
         hash_table.insert(product.id, product)
 
     while True:

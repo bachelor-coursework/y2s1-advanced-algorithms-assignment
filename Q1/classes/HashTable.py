@@ -73,7 +73,7 @@ class HashTable:
     def print(self):
         line = ""
         for i, bucket in enumerate(self.buckets):
-            line += f"[{i}] "
+            line += f"[Bucket {i}] "
 
             if not bucket:
                 line += "None\n"
@@ -81,8 +81,8 @@ class HashTable:
 
             current_entry = bucket
             while current_entry:
-                line += f"({current_entry.key}, {current_entry.value}) -> "
+                line += f"\n({current_entry.key}, {current_entry.value}) ->"
                 current_entry = current_entry.next
-            line += "\n"
+            line += "\n\n"
 
         print(line)
