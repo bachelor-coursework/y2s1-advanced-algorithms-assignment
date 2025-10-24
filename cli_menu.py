@@ -37,3 +37,12 @@ def input_int(prompt: str) -> int:
             return int(return_value)
         else:
             print("Invalid integer.")
+
+
+def input_bool(prompt: str) -> bool:
+    while True:
+        return_value = input(prompt).lower()
+        if return_value in ["y", "n"]:
+            return return_value == "y"
+        else:
+            print("Invalid choice.")
