@@ -17,3 +17,15 @@ To run performance comparison between `hash table` and `one dimensional array`:
 cd project_root
 python3 -m Q1.performance_comparison
 ```
+
+## Q2
+
+```
+python3 -m Q2.main
+```
+
+## Q3
+
+```
+python3 -m Q3.main
+```
