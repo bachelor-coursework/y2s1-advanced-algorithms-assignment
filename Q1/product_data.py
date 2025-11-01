@@ -22,3 +22,7 @@ product_data = [
     Product("Baby Feeding Set", "Complete feeding set with plate, bowl, spoon, fork", 39.90, 90),
     Product("Baby Bath Tub", "Portable non-slip baby bath tub with support", 89.00, 45),
 ]
+
+big_product_data = []
+for i in range(1_000):
+    big_product_data.append(Product("", "", 0, 0))

@@ -26,11 +26,14 @@ def multi_threading() -> int:
     """Runs jobs using multithreading. Returns time taken in nanoseconds."""
     args_list = [50, 100, 200]
 
-    threads = [threading.Thread(target=factorial, args=(n,), daemon=True) for n in args_list]
+    threads = [threading.Thread(target=factorial, args=(n,)) for n in args_list]
 
     start = time.perf_counter_ns()
     for t in threads:
         t.start()
+
+    for t in threads:
+        t.join()
     end = time.perf_counter_ns()
 
     total_time_taken = end - start
