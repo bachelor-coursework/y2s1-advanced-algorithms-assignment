@@ -52,9 +52,15 @@ def main():
 
     print(
         f"""
-Average from {rounds} rounds:
-Multi-threading took: {multi_threading_total_time_taken / rounds}ns
-Single-threading took: {single_threading_total_time_taken / rounds}ns
+From {rounds} rounds:
+----------------------
+Multi-threading took
+total: {multi_threading_total_time_taken}ns
+average: {multi_threading_total_time_taken / rounds}ns
+
+Single-threading took
+total: {single_threading_total_time_taken}ns
+average: {single_threading_total_time_taken / rounds}ns
 """
     )
 
