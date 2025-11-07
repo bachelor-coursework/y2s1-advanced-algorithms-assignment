@@ -7,7 +7,7 @@ import cli_menu
 
 def _concat_user_names(users: list[Person]):
     return_string = ""
-    for i, user in enumerate(users):
+    for user in users:
         return_string += f"[{user.id}] {user.name}\n"
     return return_string
 

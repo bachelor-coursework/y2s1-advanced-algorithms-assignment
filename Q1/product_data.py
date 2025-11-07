@@ -25,4 +25,4 @@ product_data = [
 
 big_product_data = []
 for i in range(1_000):
-    big_product_data.append(Product("", "", 0, 0))
+    big_product_data.append(Product(f"Product Name {i}", f"Description {i}", 20.0, 1))

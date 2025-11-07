@@ -9,7 +9,7 @@ import random
 
 def hash_table_performance(hash_table: HashTable, data: list[Product]):
     total_time_taken = 0
-    number_of_products = 0
+    number_of_products = len(data)
 
     for product in data:
         start = time.perf_counter()
@@ -17,13 +17,13 @@ def hash_table_performance(hash_table: HashTable, data: list[Product]):
         end = time.perf_counter()
 
         total_time_taken += end - start
-        number_of_products += 1
+
     return total_time_taken / number_of_products
 
 
 def one_dimensional_array_performance(array: list[Product], data: list[Product]):
     total_time_taken = 0
-    number_of_products = 0
+    number_of_products = len(data)
 
     for product in data:
         start = time.perf_counter()
@@ -33,7 +33,7 @@ def one_dimensional_array_performance(array: list[Product], data: list[Product])
         end = time.perf_counter()
 
         total_time_taken += end - start
-        number_of_products += 1
+
     return total_time_taken / number_of_products
 
 
@@ -57,7 +57,7 @@ def main():
     array_average_time = one_dimensional_array_performance(array, test_data)
     print(
         f"""
-Performance between
+Average time taken per product search
 Hash Table: {hash_table_average_time * 1_000_000:.2f}µs
 One Dimensional Array: {array_average_time * 1_000_000:.2f}µs
 
